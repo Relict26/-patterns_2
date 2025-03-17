@@ -15,14 +15,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'  
 
-      - name: Copy JAR file
-        run: cp artifacts/app-ibank.jar .
-
       - name: Start application
-        run: java -jar app-ibank.jar -P:profile=test &
-
-      - name: Build with Gradle
-        run: ./gradlew build
+        run: java -jar artifacts/app-ibank.jar -P:profile=test -Dheadless=true &
 
       - name: Run tests
         run: ./gradlew test
